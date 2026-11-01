@@ -13,6 +13,14 @@ npm run dev
 
 Abre la direccion que muestra Vite, normalmente `http://localhost:5173/ruvanova/`. El juego necesita un teclado; haz clic en el area del juego para activar sus controles.
 
+## Pagina y foco del teclado
+
+El sitio conserva una sola pagina: primero el videojuego, despues las cinco mecanicas avanzadas y una guia visual de controles. La informacion se adapta a pantallas pequenas; el juego mantiene su resolucion interna de 1000 × 580 y necesita teclado.
+
+Haz clic en el juego o enfocalo con Tab para usar sus controles. Mientras tiene el foco, espacio y flechas no desplazan la pagina. Pulsa Tab o haz clic fuera para continuar leyendo: la partida se pausa y se liberan las teclas. Para continuar, vuelve al juego y pulsa P.
+
+Las ilustraciones de naves reutilizan las texturas generadas por Phaser despues del primer fotograma; los simbolos y diagramas se dibujan con HTML/CSS. No hay descargas de imagenes ni nuevas dependencias, y los recursos mantienen compatibilidad con `/ruvanova/`.
+
 ## Como jugar
 
 Pulsa **Iniciar mision** o **Enter** en el menu. Destruye las naves enemigas y sobrevive el mayor tiempo posible.
@@ -80,3 +88,5 @@ vite.config.js               Ruta base para GitHub Pages
 `npm run build` comprueba la compilacion de produccion. El proyecto no incluye una suite automatizada de pruebas. Para comprobar la interaccion, inicia una partida, prueba movimiento y disparos, pulsa P dos veces, verifica la perdida de vidas por colision y fuga, espera el cambio de nivel y comprueba el reinicio y el record despues de recargar.
 
 Pruebas manuales de las mejoras: recoger los cuatro tipos de Power-Ups y comprobar duracion, combinacion y limite de vidas; activar Q con y sin carga y comprobar su alcance sobre enemigos y jefes; alcanzar varios umbrales de jefe, recibir sus proyectiles y derrotarlos; comprobar combos por bajas, daño y espera; pausar durante mejoras y ataques; revisar fluidez, camara lenta, Game Over, reinicio y persistencia del record.
+
+Pruebas manuales de la pagina: revisar las cinco caracteristicas y los controles en escritorio y movil; comprobar que las naves se muestran despues de cargar; enfocar el juego, mantener espacio y flechas y verificar que la pagina no se desplaza; salir con Tab o un clic y comprobar la pausa, el scroll normal y la liberacion de teclas; volver al juego y reanudar con P. Repetir las transiciones menu, partida, Game Over y reinicio desde la pagina ampliada.

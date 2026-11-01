@@ -1,1 +1,75 @@
 :root{font-family:Inter,Arial,sans-serif;color:#eef3ff;background:#070b13;font-synthesis:none;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 35%,#10182b88,transparent 65%);min-height:100vh}.shell{max-width:1160px;margin:auto;padding:0 40px}.topbar{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff10}.brand{font-size:20px;font-weight:900;letter-spacing:3px;text-decoration:none;color:#fff}.brand>span:last-child{color:#68e3f3}.brand-icon{color:#68e3f3;font-size:31px;margin-right:12px}.status,.eyebrow,.frame-label,.frame-bottom,footer,.controls b,.keyboard-note{font-family:monospace;font-size:10px;letter-spacing:1.4px}.status{color:#9ca9be}.status i,.frame-label i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#5ee4bc;margin-right:8px;box-shadow:0 0 9px #5ee4bc66}.version{color:#536078;margin-left:14px}.intro{text-align:center;margin:39px 0 29px}.eyebrow{color:#67dbea;font-size:10px}.intro h1{font-size:32px;letter-spacing:-1px;margin:12px 0 9px;font-weight:600}.intro p{color:#8490a6;font-size:13px;margin:0}.game-frame{border:1px solid #273248;border-radius:10px;overflow:hidden;box-shadow:0 20px 90px #0005}.frame-label,.frame-bottom{background:#101623;display:flex;justify-content:space-between;align-items:center;color:#76859e;padding:13px 20px;font-size:9px;letter-spacing:1.3px}.frame-label>span:last-child{color:#4d5b73}.frame-label i{background:#68ddee;box-shadow:none}.frame-bottom{background:#0c121e;padding:10px 20px;color:#485971;font-size:8px}.frame-bottom>span:first-child{color:#639e99}#game{width:100%;aspect-ratio:1000/580;outline:none;background:#080e20}#game:focus-visible{outline:1px solid #65e3f3;outline-offset:-2px}canvas{display:block}.controls{display:flex;justify-content:center;gap:64px;padding:28px 0 32px}.controls>div{display:flex;gap:13px;align-items:center}.control-number{font:10px monospace;color:#394962}.controls b{display:block;font-size:8px;color:#718097;font-weight:400;margin-top:10px;letter-spacing:1px}kbd{font:10px monospace;border:1px solid #2b374c;padding:5px 7px;border-radius:4px;color:#c5cfdf;background:#121a28;box-shadow:0 2px #0003}.controls small{color:#45536b;margin:0 5px}footer{border-top:1px solid #ffffff10;display:flex;justify-content:space-between;padding:22px 0;color:#7f8ea5;font-size:8px;letter-spacing:1px}.muted{color:#414d63;margin-left:8px}.footer-star{color:#66ddeb;margin-left:14px}.keyboard-note{text-align:center;color:#53627a;font-size:9px;margin:0 0 20px;letter-spacing:.4px}@media(max-width:700px){.shell{padding:0 14px}.topbar{height:70px}.status{font-size:8px}.version{display:none}.brand{font-size:15px;letter-spacing:2px}.intro{margin:28px 0 22px}.intro h1{font-size:27px}.controls{gap:20px;padding:24px 0}.control-number{display:none}kbd{font-size:8px;padding:4px}.controls b{font-size:7px}.frame-label>span:last-child,footer>span:last-child{display:none}.frame-label{font-size:8px;padding:10px}.frame-bottom{font-size:7px;padding:8px}footer{justify-content:center}}
+
+/* Presentacion de las mecanicas y guia de vuelo. */
+.features, .flight-guide { margin-top: 76px; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 28px; }
+.section-heading h2 { margin: 12px 0 0; font-size: clamp(25px, 3vw, 34px); letter-spacing: -1px; font-weight: 600; }
+.section-heading > p { max-width: 300px; margin: 0; color: #96a3b9; font-size: 13px; line-height: 1.7; }
+.feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.feature-card { min-width: 0; overflow: hidden; border: 1px solid #273248; border-radius: 10px; background: #0c1220; }
+.feature-copy { padding: 26px 28px 28px; }
+.feature-index, .feature-detail, .visual-label { font: 9px monospace; letter-spacing: 1.3px; color: #8ea3bf; }
+.feature-copy h3 { font-size: 24px; font-weight: 600; letter-spacing: -.5px; margin: 12px 0; }
+.feature-copy p { color: #a1adc1; font-size: 14px; line-height: 1.8; margin: 0 0 20px; }
+.feature-detail { display: block; color: #72dce9; line-height: 1.8; }
+.feature-visual { position: relative; height: 184px; display: flex; align-items: center; justify-content: center; gap: 20px; overflow: hidden; border-bottom: 1px solid #273248; background: radial-gradient(ellipse at center, #25205288, transparent 70%), #080e20; }
+.feature-visual::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .35; background-image: radial-gradient(circle, #a9c9e6 1px, transparent 1px), radial-gradient(circle, #7286b3 1px, transparent 1px); background-size: 69px 61px, 111px 91px; background-position: 15px 25px, 49px 9px; }
+.visual-label { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font-size: 8px; color: #a1b8d5; }
+.visual-label span { color: #72edff; }
+.ship-preview, .boss-preview { position: relative; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(0 0 14px #72edff50); }
+.ship-preview { width: 67px; height: auto; }
+.nova-card { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; background: linear-gradient(110deg, #0a1625, #12122b); }
+.nova-card .feature-copy { padding: 36px; }
+.nova-visual { height: 280px; border-bottom: 0; border-right: 1px solid #273248; background: radial-gradient(ellipse, #0c677d45, transparent 65%); }
+.nova-ring { position: absolute; border: 1px solid #72edff; border-radius: 50%; box-shadow: 0 0 22px #72edff20, inset 0 0 22px #72edff20; }
+.ring-outer { width: 218px; height: 218px; opacity: .4; }
+.ring-inner { width: 144px; height: 144px; border-width: 2px; opacity: .8; }
+.power-token { position: relative; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid currentColor; border-radius: 9px; font: 22px monospace; background: #0c1325; box-shadow: 0 0 20px #0005; transform: rotate(-8deg); }
+.power-token:nth-child(even) { transform: translateY(14px) rotate(8deg); }
+.triple-token { color: #b998ff; }
+.shield-token { color: #72edff; }
+.rapid-token { color: #ffd166; }
+.life-token { color: #78ffae; }
+.boss-preview { width: 105px; height: auto; filter: drop-shadow(0 0 18px #b998ff55); }
+.boss-health { position: absolute; width: 152px; top: 24px; height: 4px; background: linear-gradient(to right, #b998ff 75%, #302447 75%); }
+.boss-projectiles { position: absolute; top: 130px; font: 24px monospace; color: #ff83bb; letter-spacing: 12px; padding-left: 12px; }
+.combo-visual { gap: 22px; }
+.combo-trail { position: relative; font: 22px monospace; color: #8393b1; }
+.combo-trail span { color: #45526b; font-size: 16px; }
+.combo-visual strong { position: relative; font: bold 64px monospace; letter-spacing: -5px; color: #72edff; text-shadow: 0 0 30px #72edff44; }
+.cinema-visual { gap: 36px; }
+.cinema-visual .ship-preview { transform: rotate(18deg); }
+.impact-spark { position: relative; color: #b998ff; font-size: 72px; text-shadow: 0 0 24px #a15af0; }
+.star-trails { position: absolute; inset: 0; opacity: .3; background: repeating-linear-gradient(115deg, transparent 0 56px, #72edff55 57px, transparent 58px 85px); }
+.flight-guide { margin-bottom: 60px; }
+.flight-guide .controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 0; border: 1px solid #273248; border-radius: 10px; overflow: hidden; background: #0c1220; }
+.flight-guide .controls > div { gap: 14px; padding: 28px 22px; align-items: start; }
+.flight-guide .control-number { padding-top: 5px; color: #7f91ad; }
+.controls h3 { margin: 18px 0 8px; font-size: 13px; font-weight: 500; }
+.controls p { margin: 0; color: #96a3b9; font-size: 12px; line-height: 1.7; }
+.flight-guide kbd { display: inline-block; font-size: 10px; }
+.mission-note { color: #96a3b9; font-size: 12px; line-height: 1.8; margin: 24px 0; }
+.mission-note > span { color: #72edff; margin-right: 8px; }
+.back-to-game { display: inline-block; padding: 12px 0; font: 11px monospace; letter-spacing: 1px; color: #72edff; text-underline-offset: 6px; }
+a:focus-visible { outline: 2px solid #72edff; outline-offset: 5px; }
+#game { scroll-margin-top: 20px; }
+.game-frame + .keyboard-note { margin-top: 22px; color: #98a7bf; line-height: 2.3; }
+@media (max-width: 850px) {
+  .flight-guide .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-heading { align-items: start; flex-direction: column; gap: 16px; }
+  .section-heading > p { max-width: 480px; }
+}
+@media (max-width: 580px) {
+  .features, .flight-guide { margin-top: 48px; }
+  .feature-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .nova-card { grid-template-columns: minmax(0, 1fr); }
+  .nova-visual { height: 250px; border-right: 0; border-bottom: 1px solid #273248; }
+  .feature-copy, .nova-card .feature-copy { padding: 24px; }
+  .feature-copy h3 { font-size: 22px; }
+  .flight-guide .controls { grid-template-columns: minmax(0, 1fr); }
+  .flight-guide .controls > div { padding: 22px; border-bottom: 1px solid #273248; }
+  .flight-guide .controls > div:last-child { border-bottom: 0; }
+  .flight-guide .control-number { display: block; }
+  .frame-bottom { gap: 10px; letter-spacing: .4px; }
+  .status { letter-spacing: .6px; }
+}
