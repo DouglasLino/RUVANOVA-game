@@ -1,92 +1,138 @@
 # RUVANOVA
 
-Videojuego web 2D de supervivencia espacial con JavaScript, Phaser 3 y Vite. Sin backend, cuentas ni recursos graficos externos: Phaser dibuja las naves, las estrellas y los efectos.
+RUVANOVA es un videojuego web 2D de disparos y supervivencia espacial, desarrollado con apoyo de IA como parte de una actividad de vibecoding y prompt engineering. El jugador controla una nave, destruye enemigos y acumula puntos mientras intenta sobrevivir con tres vidas.
+
+El objetivo del proyecto es crear un juego sencillo y atractivo, trabajando por etapas con instrucciones claras para la IA y revisando los resultados antes de continuar.
+
+## Tecnologias utilizadas
+
+- **JavaScript y Phaser 3:** logica, escenas, movimiento, colisiones y efectos del juego.
+- **HTML5 y CSS3:** presentacion de la pagina y diseño adaptable.
+- **Vite y npm:** instalacion, ejecucion local y compilacion.
+- **localStorage:** almacenamiento del record en el navegador.
+- **GitHub Actions y GitHub Pages:** configuracion para compilar y publicar el sitio.
 
 ## Instalacion y ejecucion
 
-Necesitas Node.js 22 y npm.
+Necesitas Node.js 22 y npm. Desde la carpeta del proyecto, ejecuta:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abre la direccion que muestra Vite, normalmente `http://localhost:5173/ruvanova/`. El juego necesita un teclado; haz clic en el area del juego para activar sus controles.
+Abre la direccion indicada por Vite, normalmente `http://localhost:5173/RUVANOVA-game/`. El juego necesita teclado; haz clic en su area para activar los controles.
 
-## Pagina y foco del teclado
-
-El sitio conserva una sola pagina: primero el videojuego, despues las cinco mecanicas avanzadas y una guia visual de controles. La informacion se adapta a pantallas pequenas; el juego mantiene su resolucion interna de 1000 × 580 y necesita teclado.
-
-Haz clic en el juego o enfocalo con Tab para usar sus controles. Mientras tiene el foco, espacio y flechas no desplazan la pagina. Pulsa Tab o haz clic fuera para continuar leyendo: la partida se pausa y se liberan las teclas. Para continuar, vuelve al juego y pulsa P.
-
-Las ilustraciones de naves reutilizan las texturas generadas por Phaser despues del primer fotograma; los simbolos y diagramas se dibujan con HTML/CSS. No hay descargas de imagenes ni nuevas dependencias, y los recursos mantienen compatibilidad con `/ruvanova/`.
-
-## Como jugar
-
-Pulsa **Iniciar mision** o **Enter** en el menu. Destruye las naves enemigas y sobrevive el mayor tiempo posible.
-
-| Control | Accion |
-| --- | --- |
-| WASD o flechas | Mover la nave en ocho direcciones |
-| Barra espaciadora (mantener) | Disparar |
-| Q | Activar Nova Blast con energia al 100% |
-| P | Pausar o reanudar |
-| Enter | Iniciar desde el menu o reiniciar en Game Over |
-
-- Empiezas con tres vidas. Chocar con un enemigo o dejar que escape por el borde inferior cuesta una vida.
-- Tras una colision tienes un breve periodo de invulnerabilidad, indicado por el parpadeo de la nave. Los enemigos que escapan siempre restan una vida.
-- Cada enemigo destruido suma 100 puntos de base, afectados por el multiplicador de combo.
-- Cada 15 segundos sube el nivel: los enemigos aparecen con mayor frecuencia y velocidad.
-- Al perder las tres vidas se muestra Game Over, con opciones para reiniciar o volver al menu.
-- El record se guarda al terminar la partida en `localStorage` del navegador. Si el almacenamiento esta bloqueado, puedes seguir jugando sin persistencia.
-- Al cambiar de ventana, el juego se pausa automaticamente. Pulsa P para continuar.
-
-## Mecanicas avanzadas
-
-- **Power-Ups:** cada enemigo eliminado tiene un 22% de probabilidad de soltar una mejora. Recogela con la nave: **T** morado activa disparo triple, **E** cyan activa escudo y **R** amarillo activa disparo rapido. Duran 8 segundos; recoger el mismo tipo renueva su duracion y los distintos tipos se combinan. **+** verde recupera una vida, hasta un maximo de tres. El escudo bloquea impactos, pero los enemigos que escapan siguen restando vidas.
-- **Nova Blast:** cada eliminacion carga 10% de energia. Con 100%, pulsa **Q** para consumirla y emitir una onda de radio 260: destruye los proyectiles enemigos en pantalla, elimina enemigos cercanos y causa 15 puntos de daño a los jefes dentro del radio. Las bajas de la onda tambien recargan energia.
-- **Jefes:** aparecen al alcanzar cada umbral de 2000 puntos, uno a la vez. Tienen barra de vida, movimiento lateral y abanicos de proyectiles dirigidos hacia tu posicion. Cada jefe aumenta su resistencia y velocidad de ataque; alternan abanicos de tres y cinco disparos. Derrotarlos otorga 1000 puntos de base.
-- **Efectos:** estrellas en tres planos de parallax, particulas de explosion, destellos al disparar e impactar, vibracion y destello al derrotar jefes, con un breve periodo de camara lenta.
-- **Combos:** encadena bajas con menos de 3,5 segundos entre ellas. Cada cinco bajas aumenta el multiplicador, desde x1 hasta x5. Recibir daño o agotar el tiempo reinicia el combo. El HUD muestra bajas y multiplicador.
-- La pausa congela las mejoras temporales, la energia, los combos y los ataques de los jefes. Al reiniciar se restablecen todos los estados de la partida.
-
-## Compilacion local
+Para compilar y revisar la version de produccion:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-La compilacion se genera en `dist/`. Abre la URL de preview con la ruta `/ruvanova/`. No abras `index.html` directamente desde el sistema de archivos.
+La compilacion queda en `dist/`. Abre la direccion indicada por preview con la ruta `/RUVANOVA-game/`, en lugar de abrir el archivo HTML directamente.
 
-## Despliegue en GitHub Pages
+**Enlace publico:** 
+https://douglaslino.github.io/RUVANOVA-game/
 
-1. Sube el proyecto, incluido `package-lock.json`, a un repositorio de GitHub llamado `ruvanova`.
-2. En **Settings → Pages → Build and deployment → Source**, selecciona **GitHub Actions**.
-3. Sube los cambios a la rama `main`. El workflow `.github/workflows/deploy.yml` instala con `npm ci`, compila y publica `dist/`.
-4. Consulta la ejecucion en **Actions** y abre la URL del entorno `github-pages` al finalizar.
+## Funcionalidades principales
 
-Tambien puedes iniciar el workflow manualmente desde Actions. Utiliza los permisos integrados de GitHub Actions; no requiere tokens personales. La ruta base de Vite es `/ruvanova/`, por lo que el nombre del repositorio debe coincidir con esa ruta para el despliegue habitual en Pages.
+El juego incluye menu, enemigos automaticos, colisiones, puntuacion, tres vidas, dificultad progresiva, pausa, Game Over, reinicio y record local.
 
-## Estructura
+Las mejoras avanzadas son:
 
-```text
-.github/workflows/deploy.yml  Compilacion y despliegue
-public/assets/               Reservado para recursos locales
-src/main.js                  Configuracion de Phaser
-src/style.css                Interfaz de la pagina
-src/scenes/MenuScene.js      Menu principal
-src/scenes/GameScene.js      Partida, colisiones, HUD y pausa
-src/scenes/GameOverScene.js   Resultados y reinicio
-src/scenes/shared.js          Graficos, UI y almacenamiento compartidos
-index.html                   Contenedor del juego
-vite.config.js               Ruta base para GitHub Pages
-```
+- **Power-Ups:** disparo triple, escudo temporal, disparo rapido y recuperacion de vida.
+- **Nova Blast:** habilidad que se carga al eliminar enemigos y permite limpiar proyectiles y dañar enemigos cercanos.
+- **Jefes finales:** enemigos con barra de vida y ataques especiales que se vuelven mas dificiles.
+- **Combos:** multiplicadores de puntos por encadenar eliminaciones.
+- **Efectos cinematograficos:** estrellas en distintas capas, particulas, destellos, vibracion y camara lenta al derrotar jefes.
 
-## Validacion
+La misma pagina presenta las mecanicas y una guia de controles debajo del juego, reutilizando sus graficos.
 
-`npm run build` comprueba la compilacion de produccion. El proyecto no incluye una suite automatizada de pruebas. Para comprobar la interaccion, inicia una partida, prueba movimiento y disparos, pulsa P dos veces, verifica la perdida de vidas por colision y fuga, espera el cambio de nivel y comprueba el reinicio y el record despues de recargar.
+| Control | Accion |
+| --- | --- |
+| WASD o flechas | Mover la nave. |
+| Espacio | Disparar; se puede mantener pulsado. |
+| Q | Activar Nova Blast con la energia llena. |
+| P | Pausar o reanudar. |
+| Enter | Iniciar desde el menu o reiniciar desde Game Over. |
+| Tab | Salir del area del juego y continuar por la pagina. |
 
-Pruebas manuales de las mejoras: recoger los cuatro tipos de Power-Ups y comprobar duracion, combinacion y limite de vidas; activar Q con y sin carga y comprobar su alcance sobre enemigos y jefes; alcanzar varios umbrales de jefe, recibir sus proyectiles y derrotarlos; comprobar combos por bajas, daño y espera; pausar durante mejoras y ataques; revisar fluidez, camara lenta, Game Over, reinicio y persistencia del record.
+Al salir del foco del juego, la partida se pausa. Para continuar, vuelve a su area y pulsa P.
 
-Pruebas manuales de la pagina: revisar las cinco caracteristicas y los controles en escritorio y movil; comprobar que las naves se muestran despues de cargar; enfocar el juego, mantener espacio y flechas y verificar que la pagina no se desplaza; salir con Tab o un clic y comprobar la pausa, el scroll normal y la liberacion de teclas; volver al juego y reanudar con P. Repetir las transiciones menu, partida, Game Over y reinicio desde la pagina ampliada.
+## Prompts utilizados y ajustes
+
+Estos son extractos de tres prompts reales utilizados durante el desarrollo.
+
+### 1. Añadir mecanicas avanzadas
+
+> Quiero implementar las cinco nuevas funcionalidades avanzadas de RUVANOVA, definidas en la seccion 11 del archivo `AGENTS.md`.
+
+Se solicito incorporar las mejoras una por una, conservar las mecanicas existentes y compilar despues de cada paso. La ampliacion buscaba enriquecer la partida; dividirla en etapas permitio revisar cada cambio antes de continuar.
+
+### 2. Corregir Game Over
+
+> Corrige un error de RUVANOVA que ocurre cuando el jugador pierde todas sus vidas.
+
+El prompt incluyo el mensaje de error de consola y pidio corregir su causa respetando el ciclo de vida de Phaser. Este ajuste fue necesario porque la partida se congelaba al morir y no aparecia Game Over. Aportar el error concreto ayudo a centrar la revision.
+
+### 3. Mejorar la presentacion
+
+> Mantener una sola pagina web con el videojuego como elemento principal y agregar debajo una seccion moderna que explique todas las funcionalidades implementadas.
+
+Se pidio explicar las mecanicas con recursos visuales, conservar el estilo y evitar nuevas librerias. La pagina se amplio para presentar mejor el proyecto, y se ajusto el foco del teclado para que el desplazamiento de la pagina no interfiriera con el juego.
+
+Estos prompts combinaron contexto, tareas concretas y restricciones. Las siguientes solicitudes respondieron a necesidades detectadas durante el desarrollo, en lugar de intentar resolver todo con una sola instruccion.
+
+## Iteraciones y mejoras
+
+1. **Juego base:** menu, movimiento, disparos, enemigos, vidas, puntuacion y reinicio.
+2. **Mecanicas avanzadas:** Power-Ups, Nova Blast, jefes, efectos y combos, implementados en ese orden.
+3. **Correccion de estabilidad:** solucion del bloqueo de Game Over y revision del reinicio.
+4. **Presentacion:** seccion informativa y controles visuales en la misma pagina.
+5. **Documentacion:** explicacion del proyecto, los prompts y las validaciones para la entrega academica.
+
+## Validacion y error de Game Over
+
+Durante el desarrollo se ejecutaron compilaciones con `npm run build` despues de las mejoras. Tambien se reviso la sintaxis y se realizaron comprobaciones puntuales de puntuacion, habilidades, pausa y transiciones entre escenas. Las simulaciones de muerte y reinicio permitieron comprobar la restauracion de velocidad y la limpieza de eventos y temporizadores.
+
+El error de Game Over mostraba `Cannot set properties of null (setting 'timeScale')`. Al cerrar la escena se intentaba restaurar la velocidad del mundo fisico cuando Phaser ya lo habia destruido. Se corrigio restaurando la velocidad antes de pausar la fisica al morir y retirando ese acceso del cierre de la escena. La nueva partida tambien comienza con velocidad normal.
+
+La ultima compilacion del proyecto se realizo correctamente mediante `npm run build`, aunque se presento una advertencia relacionada con el tamaño del paquete JavaScript, sin afectar la compilacion.
+
+Ademas, realice pruebas manuales desde el navegador para verificar el movimiento de la nave, disparos, colisiones, puntuacion y funcionamiento de las nuevas habilidades. Tambien revise el comportamiento de Game Over, el reinicio de partidas y el almacenamiento del record.
+
+Durante estas pruebas se identifico y corrigio un error que impedia finalizar correctamente la partida. Despues de aplicar la solucion, se comprobo nuevamente el funcionamiento del juego.
+
+Aunque el proyecto no cuenta con pruebas automatizadas, las validaciones manuales permitieron comprobar sus principales funcionalidades y detectar errores que no se identificaban durante la compilacion.
+
+## Principales partes del codigo
+
+| Archivo | Funcion |
+| --- | --- |
+| `index.html` y `src/style.css` | Estructura y aspecto de la pagina. |
+| `src/main.js` | Inicio del juego y manejo del foco del teclado. |
+| `src/scenes/MenuScene.js` | Menu principal. |
+| `src/scenes/GameScene.js` | Partida, enemigos, habilidades, vidas y puntuacion. |
+| `src/scenes/GameOverScene.js` | Resultados y opciones para volver a jugar. |
+| `src/scenes/shared.js` | Graficos, botones, fondo y guardado del record. |
+
+Las escenas separan las pantallas del juego: **Menu → Partida → Game Over → Reinicio o Menu**. `AGENTS.md` contiene las reglas para orientar el trabajo con IA.
+
+## Reflexion final
+
+El proyecto muestra que la IA puede ayudar a convertir una idea en cambios concretos y facilitar las mejoras por etapas. Los prompts con contexto, limites y criterios de revision hicieron mas claro el trabajo.
+
+El error de Game Over tambien muestra una limitacion: una compilacion correcta no garantiza que todo funcione durante una partida. Es necesario revisar el codigo, comunicar los errores y comprobar las correcciones. El caso deja como aprendizaje la importancia de probar las transiciones y los reinicios, ademas de las funciones habituales.
+
+Como temas por reforzar, el proyecto plantea el manejo de eventos y escenas en Phaser, la depuracion de errores y las pruebas en navegador.
+
+## Reflexion personal:
+
+Desarrollar RUVANOVA con ayuda de ChatGPT y Codex fue una experiencia interesante porque pude convertir una idea sencilla en un videojuego con varias funcionalidades. Al principio buscaba crear algo basico, pero conforme fui probando el resultado se me ocurrieron nuevas mejoras que pude solicitar mediante prompts.
+
+Una de las principales ventajas que encontre fue la rapidez para desarrollar funcionalidades y realizar modificaciones sin tener que escribir todo el codigo desde cero. Sin embargo, tambien descubri que la IA puede introducir errores cuando modifica partes que ya funcionan. Esto sucedio con la pantalla de Game Over, que dejo de funcionar despues de agregar nuevas mecanicas. Para solucionarlo tuve que revisar la consola del navegador, identificar el error y proporcionar esa informacion a Codex.
+
+Actualmente comprendo mejor como se organiza el videojuego mediante escenas, como se manejan los controles, la puntuacion y las colisiones. Todavia necesito reforzar aspectos como los eventos, temporizadores y el ciclo de vida de las escenas de Phaser.
+
+Mi principal aprendizaje es que utilizar IA para programar no consiste solamente en pedirle que genere codigo. Tambien es necesario saber explicar lo que necesitamos, revisar los resultados y comprobar que cada cambio funcione correctamente.
