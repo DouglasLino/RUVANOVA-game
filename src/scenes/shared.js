@@ -34,7 +34,8 @@ export function createBackground(scene) {
   const updateStars = (_time, delta) => {
     if (scene.isPaused) return;
     for (const star of stars) {
-      star.y += delta * 0.012 * star.radius;
+      const speed = star.radius < 0.85 ? 0.008 : star.radius < 1.2 ? 0.022 : 0.045;
+      star.y += delta * speed * (scene.elapsed < scene.slowUntil ? 0.4 : 1);
       if (star.y > 582) star.y = -2;
     }
   };

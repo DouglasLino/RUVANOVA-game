@@ -200,6 +200,72 @@ para mejorar la experiencia del jugador.
 - Validar el funcionamiento despues de cada mejora.
 
 
+## 12. Calidad y prevencion de regresiones
+
+Antes de implementar cambios:
+- Analizar los componentes relacionados.
+- Identificar dependencias entre funcionalidades.
+- Respetar el ciclo de vida de las escenas de Phaser.
+- Evitar acceder a objetos destruidos o no inicializados.
+- Evitar registrar eventos y temporizadores duplicados.
+
+Durante la implementacion:
+- Realizar cambios pequeños e incrementales.
+- Mantener las funcionalidades existentes.
+- Limpiar correctamente eventos, temporizadores y efectos.
+- Evitar transiciones duplicadas entre escenas.
+- Garantizar que los estados temporales se reinicien
+  al comenzar una nueva partida.
+
+Despues de implementar:
+- Ejecutar npm run build.
+- Ejecutar pruebas automatizadas disponibles.
+- Validar las transiciones entre escenas.
+- Comprobar Game Over y reinicio de partida.
+- Comprobar pausa, disparos, Power-Ups y Nova Blast.
+- Verificar que no existan errores en consola.
+- Reportar pruebas no ejecutadas.
+
+No considerar un cambio terminado solo porque
+la compilacion finalice correctamente.
+
+
+## 13. Landing page y presentacion del videojuego
+
+RUVANOVA debe mantener una estructura de una sola pagina.
+
+La pagina principal debe contener:
+
+1. Encabezado con nombre y descripcion del videojuego.
+2. Area interactiva del videojuego.
+3. Seccion informativa de funcionalidades.
+4. Seccion de controles e instrucciones.
+5. Pie de pagina con informacion del proyecto.
+
+### Funcionalidades a presentar
+
+- Power-Ups: mejoras de armas y defensas.
+- Nova Blast: habilidad especial de energia.
+- Jefes finales: enemigos especiales.
+- Sistema de combos: multiplicadores de puntos.
+- Efectos cinematograficos: mejoras visuales.
+
+### Reglas de diseño
+
+- Mantener el estilo visual arcade espacial existente.
+- Usar una sola pagina con desplazamiento vertical.
+- No crear rutas ni paginas adicionales.
+- Reutilizar sprites, iconos y recursos del videojuego.
+- Evitar recursos externos innecesarios.
+- Adaptar el contenido a diferentes tamaños de pantalla.
+- Mantener el area del videojuego funcional.
+- Evitar afectar los controles del teclado.
+- Mantener la compatibilidad con GitHub Pages.
+
+La landing page debe describir funcionalidades
+que realmente esten implementadas.
+
+
 Objetivo principal:
 
 Mantener RUVANOVA como un videojuego 2D sencillo,
